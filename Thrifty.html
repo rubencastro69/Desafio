@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thrifty App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header">Thrifty</div>
+    
+    <div class="container" id="loginScreen">
+        <h2>Accede a Thrifty</h2>
+        <div class="input-group">
+            <label>Correo o Celular</label>
+            <input type="text" id="email" placeholder="Ingresa tu correo">
+        </div>
+        <div class="input-group">
+            <label>Contraseña</label>
+            <input type="password" id="password" placeholder="********">
+        </div>
+        <button class="btn" onclick="login()">Acceder</button>
+    </div>
+    
+    <div class="container menu-container" id="menuScreen" style="display: none;">
+        <h2>Categorías</h2>
+        <div id="menuItems"></div>
+    </div>
+    
+    <div class="container cart-container" id="cartScreen" style="display: none;">
+        <h2>Carrito</h2>
+        <ul id="cartItems"></ul>
+        <h3>Total: $<span id="totalPrice">0</span></h3>
+        <button class="btn" onclick="clearCart()">Vaciar Carrito</button>
+        <button class="btn" onclick="finalizePurchase()">Finalizar Compra</button>
+    </div>
+    
+    <script>
+        let cart = [];
+        const prices = {
+            'Cookies and Cream': 45,
+            'Felipe Especial': 75,
+            'Pistacho': 45,
+            'Algodón de Azúcar': 45,
+            'Waffle Mini': 40,
+            'Nieve Chica': 30,
+            'Banana Split': 65,
+            'Canasta Waffle': 65,
+            'Malteada': 90,
+            'Crepas': 110
+        };
+
+        function login() {
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('menuScreen').style.display = 'block';
+            document.getElementById('cartScreen').style.display = 'block';
+        }
+
+        function showMenu() {
+            const menuItems = {
+                conos: ['Cookies and Cream', 'Felipe Especial', 'Pistacho', 'Algodón de Azúcar'],
+                niños: ['Waffle Mini', 'Nieve Chica'],
+                especialidades: ['Banana Split', 'Canasta Waffle', 'Malteada', 'Crepas']
+            };
+
+            let menuContainer = document.getElementById('menuItems');
+            menuContainer.innerHTML = '';
+
+            for (let category in menuItems) {
+                menuContainer.innerHTML += `<h3>${category.charAt(0).toUpperCase() + category.slice(1)}</h3>`;
+                menuItems[category].forEach(item => {
+                    menuContainer.innerHTML += `<button onclick="addToCart('${item}')">${item} - $${prices[item]}</button>`;
+                });
+            }
+        }
+
+        function addToCart(item) {
+            cart.push(item);
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartList = document.getElementById('cartItems');
+            const totalPriceEl = document.getElementById('totalPrice');
+            let total = 0;
+            cartList.innerHTML = '';
+
+            cart.forEach((item, index) => {
+                total += prices[item];
+                cartList.innerHTML += `<li>${item} - $${prices[item]} <button onclick="removeFromCart(${index})">Eliminar</button></li>`;
+            });
+
+            totalPriceEl.textContent = total;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function clearCart() {
+            cart = [];
+            updateCart();
+        }
+
+        function finalizePurchase() {
+            if (cart.length === 0) {
+                alert("Tu carrito está vacío.");
+            } else {
+                alert("¡Compra realizada con éxito!");
+                cart = [];
+                updateCart();
+            }
+        }
+
+        showMenu();
+    </script>
+</body>
+</html>
