@@ -1,130 +1,26 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f4f4f4;
-}
-
-.header {
-    background: #e60012;
-    color: white;
-    text-align: center;
-    padding: 15px;
-    font-size: 20px;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
+    background-color: #f8f9fa;
 }
 
 .container {
-    max-width: 400px;
-    margin: auto;
-    padding: 80px 20px 20px;
     background: white;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-.input-group {
-    margin-bottom: 15px;
+.btn-danger {
+    background-color: #e60012;
+    border-color: #e60012;
 }
 
-.input-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+.btn-danger:hover {
+    background-color: #c5000f;
+    border-color: #c5000f;
 }
 
-.input-group input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.btn {
-    background: #e60012;
-    color: white;
-    border: none;
-    padding: 12px;
-    width: 100%;
-    border-radius: 5px;
-    cursor: pointer;
+#menuItems .btn {
+    text-align: center;
     font-size: 16px;
-    margin-top: 10px;
     font-weight: bold;
-}
-
-.btn:hover {
-    background: #c5000f;
-}
-
-.cart-container ul {
-    list-style: none;
-    padding: 0;
-}
-
-.cart-container ul li {
-    background: #fff3f3;
-    margin: 5px 0;
-    padding: 10px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.cart-container ul li button {
-    background: #e60012;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.cart-container ul li button:hover {
-    background: #c5000f;
-}
-
-.price {
-    color: #e60012;
-    font-weight: bold;
-    font-size: 18px;
-    margin-left: 10px;
-}
-
-.total-price {
-    color: #e60012;
-    font-size: 22px;
-    font-weight: bold;
-    display: block;
-    text-align: right;
-    margin-top: 10px;
-}
-
-.menu-container h3 {
-    margin-top: 20px;
-    border-bottom: 2px solid #e60012;
-    padding-bottom: 5px;
-}
-
-.menu-container button {
-    width: 100%;
-    background: #f8d7da;
-    color: #e60012;
-    border: 1px solid #e60012;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 16px;
-    margin: 5px 0;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.menu-container button:hover {
-    background: #e60012;
-    color: white;
 }
